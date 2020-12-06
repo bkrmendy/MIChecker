@@ -30,11 +30,12 @@ class PerceptronTestCases(unittest.TestCase):
         self.assertAlmostEqual(derivative, -0.0026, 4)
 
     def test_next_weight(self):
-        """2. ZH 14. feladat"""
+        """2. ZH 16. feladat"""
         w1 = 0.37
         i1 = -0.15
+        target = 0.19
         inputs = [1, -0.82, i1]
         output = perceptron_output([-0.92, -0.01, w1], inputs, sigmoid)
-        error = perceptron_error(output, 0.19)
-        next_weight_for_w1 = perceptron_next_weight(w1, sum(inputs), error, 0.33)
-        self.assertAlmostEqual(next_weight_for_w1, -0.3708, 4)
+        derivative = error_derivative(output, target, i1, sigmoid_prime)
+        next_weight_for_w1 = perceptron_next_weight(w1, derivative, 0.33)
+        self.assertAlmostEqual(next_weight_for_w1, 0.3708, 4)

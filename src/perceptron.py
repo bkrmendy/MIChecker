@@ -33,8 +33,8 @@ def error_derivative(output: float, target: float, input: float, activation_prim
     return -1 * (target - output) * activation_prime(output) * input
 
 
-def perceptron_next_weight(prev_weight: float, prev_input: float, error: float, learning_rate: float):
+def perceptron_next_weight(prev_weight: float, learning_rate: float, delta_err: float):
     """Calculates next weight for given weight"""
-    return prev_weight + learning_rate * error * prev_input
+    return prev_weight - learning_rate * delta_err
 
 
