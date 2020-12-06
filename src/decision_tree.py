@@ -7,7 +7,7 @@ NodeData = namedtuple("NodeData", "p, n")
 
 
 def I(data: NodeData) -> float:
-    """Információ-igény"""
+    """Információigény részfára"""
     if data.n == 0 or data.p == 0:
         return 0
     p_over = (data.p / (data.p + data.n))
@@ -16,6 +16,7 @@ def I(data: NodeData) -> float:
 
 
 def I_all_subtrees(data: List[NodeData]) -> float:
+    """Információigény egy csomópont összes részfájára"""
     p_total = sum(map(lambda d: d.p, data))
     n_total = sum(map(lambda d: d.n, data))
 
@@ -25,3 +26,17 @@ def I_all_subtrees(data: List[NodeData]) -> float:
 
     return result
 
+BinaryClassificationMetrics = namedtuple("BinaryClassificationMetrics",
+                                         "true_positive_rate, false_positive_rate")
+
+BinaryClassificationDescription = namedtuple("BinaryClassificationDescription",
+                                             "n_positive, n_negative, ratio_actual_positive, ratio_actual_negative")
+
+
+def calculate_binary_classification_metrics(desc: BinaryClassificationDescription) -> BinaryClassificationMetrics:
+    """Bináris osztályzó kiértékelése"""
+    n_actual_positive = desc.n_positive * desc.ratio_actual_positive
+    n_actual_negative = desc.n_negative * desc.ratio_actual_negative
+    true_positive_rate = n_actual_positive / (n_actual_positive + desc.n_negative - n_actual_negative)
+    true_negative_rate = n_actual_negative / (n_actual_negative + desc.n_positive - n_actual_positive)
+    return BinaryClassificationMetrics(true_positive_rate, true_negative_rate)
