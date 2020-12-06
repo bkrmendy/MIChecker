@@ -1,8 +1,10 @@
 import math
 from collections import namedtuple
-
 from typing import List
 
+#
+# I function
+#
 NodeData = namedtuple("NodeData", "p, n")
 
 
@@ -26,6 +28,9 @@ def I_all_subtrees(data: List[NodeData]) -> float:
 
     return result
 
+#
+# Binary classification
+#
 BinaryClassificationMetrics = namedtuple("BinaryClassificationMetrics",
                                          "true_positive_rate, false_positive_rate")
 
@@ -42,7 +47,17 @@ def calculate_binary_classification_metrics(desc: BinaryClassificationDescriptio
     return BinaryClassificationMetrics(true_positive_rate, true_negative_rate)
 
 
+#
+# Sample compexity
+#
 def sample_complexity(hypothesis_space: int, max_error_rate: float, margin: float) -> float:
-    """Calculates sample complexity function"""
+    """Calculates sample complexity function
+        Margin has to be input as 1 - delta
+        Example:
+            hypothesis_space    = 10^5
+            epsilon             = 2%
+            guaranteed rate     = 97%
+
+            sample_complexity(10 ** 5, 0.02, 0.03)"""
     return (1 / max_error_rate) * (math.log(1 / margin) + math.log(abs(hypothesis_space)))
 
