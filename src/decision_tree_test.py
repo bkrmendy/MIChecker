@@ -7,7 +7,7 @@ from .decision_tree import I,\
     sample_complexity
 
 
-class MyTest(unittest.TestCase):
+class DecisionTreeTests(unittest.TestCase):
     def test_I(self):
         """Tesztesetek a 2. zh-ból: 1., 2., 3., 4. feladat"""
         self.assertAlmostEqual(I(NodeData(1070, 990)), 0.9989, 4)
