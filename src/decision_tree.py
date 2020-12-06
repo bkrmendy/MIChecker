@@ -15,7 +15,7 @@ def I(data: NodeData) -> float:
     return - p_over * math.log(p_over, 2) - n_over * math.log(n_over, 2)
 
 
-def Nyereseg(data: List[NodeData]) -> float:
+def I_all_subtrees(data: List[NodeData]) -> float:
     p_total = sum(map(lambda d: d.p, data))
     n_total = sum(map(lambda d: d.n, data))
 
@@ -24,3 +24,4 @@ def Nyereseg(data: List[NodeData]) -> float:
         result += (subtree.p + subtree.n) / (p_total + n_total) * I(subtree)
 
     return result
+
