@@ -40,3 +40,9 @@ def calculate_binary_classification_metrics(desc: BinaryClassificationDescriptio
     true_positive_rate = n_actual_positive / (n_actual_positive + desc.n_negative - n_actual_negative)
     true_negative_rate = n_actual_negative / (n_actual_negative + desc.n_positive - n_actual_positive)
     return BinaryClassificationMetrics(true_positive_rate, true_negative_rate)
+
+
+def sample_complexity(hypothesis_space: int, max_error_rate: float, margin: float) -> float:
+    """Calculates sample complexity function"""
+    return (1 / max_error_rate) * (math.log(1 / margin) + math.log(abs(hypothesis_space)))
+
