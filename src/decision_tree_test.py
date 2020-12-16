@@ -1,7 +1,7 @@
 import unittest
 from .decision_tree import I,\
     NodeData,\
-    I_all_subtrees,\
+    Maradek,\
     BinaryClassificationDescription,\
     calculate_binary_classification_metrics, \
     sample_complexity
@@ -15,9 +15,9 @@ class DecisionTreeTests(unittest.TestCase):
         self.assertAlmostEqual(I(NodeData(230, 0)), 0, 4)
         self.assertAlmostEqual(I(NodeData(350, 816)), 0.8815, 4)
 
-    def test_I_all_subtrees(self):
+    def test_Maradek(self):
         """Tesztesetek a 2. zh-ból: 5. feladat"""
-        self.assertAlmostEqual(I_all_subtrees([NodeData(230, 0), NodeData(490, 174), NodeData(350, 816)]), 0.7664, 4)
+        self.assertAlmostEqual(Maradek([NodeData(230, 0), NodeData(490, 174), NodeData(350, 816)]), 0.7664, 4)
 
     def test_binary_classification(self):
         """Tesztesetek a 2. zh-ból: 11. feladat"""

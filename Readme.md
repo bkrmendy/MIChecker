@@ -1,5 +1,3 @@
 # MI Checker
 
-Python script kollekció egyes BME Mesterséges Intelligencia feladat ellőrzéséhez.
-
-Figyelem: a scriptek használata teljesen saját felelősségre! 
+Use of this software is absolutely prohibited under exam conditions.

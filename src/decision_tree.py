@@ -17,7 +17,7 @@ def I(data: NodeData) -> float:
     return - p_over * math.log(p_over, 2) - n_over * math.log(n_over, 2)
 
 
-def I_all_subtrees(data: List[NodeData]) -> float:
+def Maradek(data: List[NodeData]) -> float:
     """Információigény egy csomópont összes részfájára"""
     p_total = sum(map(lambda d: d.p, data))
     n_total = sum(map(lambda d: d.n, data))
