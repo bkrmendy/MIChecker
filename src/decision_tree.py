@@ -2,12 +2,12 @@ import math
 from collections import namedtuple
 from typing import List
 
+
+NodeData = namedtuple("NodeData", "p, n")
+
 #
 # I function
 #
-NodeData = namedtuple("NodeData", "p, n")
-
-
 def I(data: NodeData) -> float:
     """Információigény részfára"""
     if data.n == 0 or data.p == 0:
